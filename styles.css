@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .navbar ul li a {
+        font-size: 16px;
+    }
+    .inicio-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .inicio-container img {
+        margin: 0 0 20px 0;
+    }
+    .sobre-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sobre-imagem img {
+        width: 80%;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        font-size: 1.5em;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F8F8F8;
+    z-index: 0;
+    overflow-x: hidden;
+    position: relative;
+    
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("images/elegant_gold_hand_painted_alcohol_ink_background_design_2801.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9; /* ajuste como quiser */
+    z-index: -1;
+    pointer-events: none; /* para não bloquear cliques */
+  }
+
+/*#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    top: 0;
+    left: 0;
+    background: #f8f8f8;
+}*/
+
+
+/*.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #F8F8F8;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #B8860B;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #DAA520;
+}*/
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #F8F8F8;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo img {
+    width: 30px;
+    height: 30px;
+}
+
+.nav-logo span {
+    font-size: 20px;
+    font-weight: 500;
+    color: #B8860B;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #B8860B;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #DAA520;
+}
+
+
+
+/* Estilização da seção de início */
+
+.inicio-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.inicio-container img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-right: 40px;
+}
+
+.inicio-texto {
+    max-width: 750px;
+}
+
+.inicio-texto h1 {
+    font-size: 1.7em;
+    color: #B8860B;
+    margin: 0px 0px;
+}
+
+.inicio-texto p {
+    font-size: 0.6em;
+    color: #555;
+    padding-left: 9px;
+}
+
+.social-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 25px;
+}
+
+.social-btn {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px 10px 10px;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    text-align: center;
+}
+
+.social-btn i {
+    margin-right: 8px;
+    font-size: 25px;
+    color: #B8860B;
+}
+
+
+.instagram {
+    color: #B8860B;
+}
+
+.linkedin {
+    color: #B8860B;
+}
+
+.whatsapp {
+    color: #B8860B;
+}
+
+.social-btn:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+
+.section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.sobre-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 0;
+    gap: 40px;
+}
+
+.sobre-texto {
+    max-width: 600px;
+    background-color: #B8860B;
+    padding: 5px 30px;
+    border-radius: 10%;
+}
+
+.sobre-texto h2 {
+    font-size: 2.em;
+    color: #ffff;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.sobre-texto p {
+    font-size: 0.6em;
+    color: #ffff;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.sobre-imagem img {
+    width: 350px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+    border: 3px solid #B8860B;
+}
+
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#contato {
+    height: 200px;
+    padding: 60px 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .contato-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  #contato h2 {
+    font-size: 1.7em;
+    color: #B8860B; 
+  }
+
+  .redes-sociais {
+    min-width: 200px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .redes-sociais a i{
+    color: #B8860B; 
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .redes-sociais a i:hover {
+    color: #d4af37;
+    transform: scale(1.5);
+    opacity: 0.9;
+  }
+ 
+  
+footer {
+    background-color: #B8860B; 
+    padding: 2px 10px;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+.footer-content p {
+    font-size: 0.95rem;
+    color: #ffff; 
+}
+
