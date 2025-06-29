@@ -2,38 +2,109 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .navbar ul {
+/* =================== RESPONSIVIDADE MELHORADA =================== */
+@media (max-width: 992px) {
+    .nav-container {
         flex-direction: column;
-        gap: 10px;
+        align-items: flex-start;
     }
-    .navbar ul li a {
+
+    .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links li a {
+        display: block;
+        width: 100%;
         font-size: 16px;
+        padding: 8px 0;
     }
+
     .inicio-container {
         flex-direction: column;
+        align-items: center;
         text-align: center;
+        padding: 20px;
     }
+
     .inicio-container img {
         margin: 0 0 20px 0;
     }
+
+    .social-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
     .sobre-container {
         flex-direction: column;
         text-align: center;
+        padding: 60px 20px;
+    }
+
+    .sobre-texto {
+        border-radius: 20px;
     }
 
     .sobre-imagem img {
         width: 80%;
         margin-top: 20px;
     }
-}
 
-@media (max-width: 480px) {
-    .section {
-        font-size: 1.5em;
+    #contato {
+        height: auto;
+        padding: 40px 20px;
     }
 }
+
+@media (max-width: 576px) {
+    .inicio-texto h1 {
+        font-size: 1.3em;
+    }
+
+    .inicio-texto p,
+    .sobre-texto p {
+        font-size: 0.9em;
+    }
+
+    .social-btn {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+
+    .social-btn i {
+        font-size: 18px;
+    }
+
+    .sobre-texto h2 {
+        font-size: 1.4em;
+    }
+
+    .redes-sociais a i {
+        font-size: 1.3rem;
+    }
+
+    .section {
+        font-size: 1.2em;
+        padding: 40px 10px;
+    }
+
+    footer {
+        padding: 10px 5px;
+    }
+
+    .footer-content p {
+        font-size: 0.85rem;
+    }
+}
+
 
 html {
     scroll-behavior: smooth;
@@ -60,53 +131,6 @@ body::before {
     z-index: -1;
     pointer-events: none; /* para não bloquear cliques */
   }
-
-/*#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -10;
-    top: 0;
-    left: 0;
-    background: #f8f8f8;
-}*/
-
-
-/*.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #F8F8F8;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 30px 0;
-    text-align: center;
-    z-index: 1000;
-}
-
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-.navbar ul li {
-    display: inline;
-}
-
-.navbar ul li a {
-    text-decoration: none;
-    color: #B8860B;
-    font-size: 18px;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.navbar ul li a:hover {
-    color: #DAA520;
-}*/
 
 .navbar {
     position: fixed;
@@ -354,3 +378,102 @@ footer {
     color: #ffff; 
 }
 
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .inicio-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .inicio-container img {
+    width: 180px;
+    height: 180px;
+    margin: 0 0 20px 0;
+  }
+
+  .inicio-texto h1 {
+    font-size: 1.5em;
+  }
+
+  .inicio-texto p {
+    font-size: 1em;
+    padding: 0;
+  }
+
+  .social-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .social-btn {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .sobre-container {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .sobre-texto {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .sobre-imagem img {
+    width: 90%;
+    max-width: 300px;
+    margin-top: 20px;
+  }
+
+  #contato {
+    height: auto;
+    padding: 40px 10px;
+  }
+
+  .redes-sociais a i {
+    font-size: 1.3rem;
+  }
+
+  footer {
+    padding: 10px;
+  }
+
+  .footer-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .inicio-texto h1 {
+    font-size: 1.2em;
+  }
+
+  .inicio-texto p {
+    font-size: 0.9em;
+  }
+
+  .social-btn i {
+    font-size: 18px;
+  }
+
+  .sobre-texto h2 {
+    font-size: 1.2em;
+  }
+
+  .section {
+    font-size: 1em;
+  }
+}
