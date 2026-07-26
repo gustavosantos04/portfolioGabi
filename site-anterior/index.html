@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <link rel="shortcut icon" href="images/icone.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!--<div id="particles-js"></div>-->
+
+    <header class="navbar">
+        <nav>
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="images/icone.png" alt="Ícone Psicologia">
+                    <span>Psicologia</span>
+                </div>
+                <button
+                    type="button"
+                    class="nav-toggle"
+                    id="nav-toggle"
+                    aria-label="Abrir menu de navegação"
+                    aria-expanded="false"
+                    aria-controls="nav-links"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#certificados">Certificados</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio" class="section">
+        <div class="inicio-container">
+            <img src="images/foto casamento.jpg" alt="Gabriela Pazzim">
+            <div class="inicio-texto">
+                <h1>Gabriela Pazzim Machado</h1>
+                <p>Estudante de Psicologia | Apaixonada por processos mentais</p>
+                <div class="social-buttons">
+                    <a href="https://www.instagram.com/gabiipazzim_?igsh=MTJieGY0bDR1ZGZuaA==" target="_blank" rel="noopener noreferrer" class="btn social-btn instagram">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.linkedin.com/in/gabriela-pazzim-02a70229a/" target="_blank" rel="noopener noreferrer" class="btn social-btn linkedin">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://wa.me/+5551999390857" target="_blank" rel="noopener noreferrer" class="btn social-btn whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Whatsapp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="section">
+        <div class="sobre-container">
+            <div class="sobre-texto">
+                <h2>Sobre Mim</h2>
+                <p>Estudante de Psicologia, atualmente no quinto semestre. Apaixonada pelo estudo do comportamento humano e pelo impacto da psicologia no bem-estar e desenvolvimento das pessoas. Possuo habilidades em escuta ativa, empatia e comunicação interpessoal, além de conhecimentos teóricos sólidos adquiridos ao longo da graduação.</p>
+                <p>Busco oportunidades para aplicar meus conhecimentos em ambientes acadêmicos e profissionais, contribuindo com minha dedicação, empatia e capacidade analítica. Comprometida com o aprendizado contínuo, estou sempre em busca de aprimoramento para me tornar uma profissional qualificada e ética na área da psicologia.</p>
+            </div>
+            <div class="sobre-imagem">
+                <img src="images/jaleco.png" alt="Ilustração psicológica">
+            </div>
+        </div>
+    </section>
+
+    <section id="certificados" class="section">
+        <div class="certificados-container">
+            <div class="certificados-header">
+                <h2>Certificados</h2>
+            </div>
+
+            <div class="certificados-grid">
+                <article class="certificado-card">
+                    <span class="certificado-tag">PDF</span>
+                    <h3>Psicofarmacologia</h3>
+                    <p>Certificado de conclusão de curso de Psicofarmacologia pelo Centro Educacional Sete de Setembro</p>
+                    <div class="certificado-actions">
+                        <button type="button" class="btn-certificado btn-visualizar" data-pdf="certificados/Psicofarmacologia.pdf" data-title="Psicofarmacologia">Visualizar aqui</button>
+                        <a class="btn-certificado btn-abrir" href="certificados/Psicofarmacologia.pdf" target="_blank" rel="noopener noreferrer">Abrir PDF</a>
+                    </div>
+                </article>
+
+                <article class="certificado-card">
+                    <span class="certificado-tag">PDF</span>
+                    <h3>Neuropsicologia</h3>
+                    <p>Certificado de conclusão de curso de Neuropsicologia pelo Centro Educacional Sete de Setembro</p>
+                    <div class="certificado-actions">
+                        <button type="button" class="btn-certificado btn-visualizar" data-pdf="certificados/Neuropsicologia.pdf" data-title="Neuropsicologia">Visualizar aqui</button>
+                        <a class="btn-certificado btn-abrir" href="certificados/Neuropsicologia.pdf" target="_blank" rel="noopener noreferrer">Abrir PDF</a>
+                    </div>
+                </article>
+
+                <article class="certificado-card">
+                    <span class="certificado-tag">PDF</span>
+                    <h3>Neuroanatomia</h3>
+                    <p>Certificado de conclusão de curso de Neuroanatomia pelo Centro Educacional Sete de Setembro</p>
+                    <div class="certificado-actions">
+                        <button type="button" class="btn-certificado btn-visualizar" data-pdf="certificados/Neuroanatomia.pdf" data-title="Neuroanatomia">Visualizar aqui</button>
+                        <a class="btn-certificado btn-abrir" href="certificados/Neuroanatomia.pdf" target="_blank" rel="noopener noreferrer">Abrir PDF</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="section">
+        <div class="contato-container">
+            <div class="contato-container">
+                <h2>Entre em Contato</h2>
+                <div class="redes-sociais">
+                    <a href="https://www.instagram.com/gabiipazzim_?igsh=MTJieGY0bDR1ZGZuaA==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/+5551999390857" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/gabriela-pazzim-02a70229a/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="certificado-modal" id="certificado-modal" aria-hidden="true">
+        <div class="certificado-modal__overlay" data-close-modal></div>
+        <div class="certificado-modal__content" role="dialog" aria-modal="true" aria-labelledby="certificado-modal-title">
+            <div class="certificado-modal__header">
+                <h3 id="certificado-modal-title">Visualizar certificado</h3>
+                <button type="button" class="certificado-modal__close" id="certificado-modal-close" aria-label="Fechar visualização">×</button>
+            </div>
+            <iframe id="certificado-frame" title="Visualização do certificado" src=""></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Gabriela Pazzim. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script defer src="script.js"></script>
+</body>
+</html>

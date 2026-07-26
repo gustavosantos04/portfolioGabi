@@ -1,148 +1,95 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll(".section");
-    const navLinks = document.querySelectorAll(".navbar a");
-    const navMenu = document.getElementById("nav-links");
-    const navToggle = document.getElementById("nav-toggle");
-    const modal = document.getElementById("certificado-modal");
-    const modalTitle = document.getElementById("certificado-modal-title");
-    const modalFrame = document.getElementById("certificado-frame");
-    const closeButton = document.getElementById("certificado-modal-close");
-    const overlay = modal ? modal.querySelector("[data-close-modal]") : null;
-    const previewButtons = document.querySelectorAll(".btn-visualizar");
+document.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector(".site-header");
+    const menu = document.getElementById("menu");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const modal = document.getElementById("certificate-modal");
+    const modalTitle = document.getElementById("modal-title");
+    const certificateFrame = document.getElementById("certificate-frame");
+    const previewButtons = document.querySelectorAll("[data-pdf]");
+    const closeModalButtons = document.querySelectorAll("[data-close-modal]");
+    const year = document.getElementById("year");
+    let lastFocusedElement = null;
 
-    function revealSections() {
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-
-            if (rect.top < window.innerHeight * 0.8) {
-                section.classList.add("visible");
-            }
-        });
+    if (year) {
+        year.textContent = new Date().getFullYear();
     }
 
-    function closeMobileMenu() {
-        if (!navMenu || !navToggle) {
-            return;
-        }
+    const updateHeader = () => {
+        header?.classList.toggle("scrolled", window.scrollY > 24);
+    };
 
-        navMenu.classList.remove("is-open");
-        navToggle.classList.remove("is-open");
-        navToggle.setAttribute("aria-expanded", "false");
-        navToggle.setAttribute("aria-label", "Abrir menu de navegação");
-    }
+    const closeMenu = () => {
+        if (!menu || !menuToggle) return;
+        menu.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.querySelector(".sr-only").textContent = "Abrir menu";
+        document.body.classList.remove("menu-open");
+    };
 
-    function toggleMobileMenu() {
-        if (!navMenu || !navToggle) {
-            return;
-        }
+    const toggleMenu = () => {
+        if (!menu || !menuToggle) return;
+        const open = !menu.classList.contains("is-open");
+        menu.classList.toggle("is-open", open);
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.querySelector(".sr-only").textContent = open ? "Fechar menu" : "Abrir menu";
+        document.body.classList.toggle("menu-open", open);
+    };
 
-        const willOpen = !navMenu.classList.contains("is-open");
-        navMenu.classList.toggle("is-open", willOpen);
-        navToggle.classList.toggle("is-open", willOpen);
-        navToggle.setAttribute("aria-expanded", String(willOpen));
-        navToggle.setAttribute("aria-label", willOpen ? "Fechar menu de navegação" : "Abrir menu de navegação");
-    }
-
-    function openCertificateModal(pdfPath, title) {
-        if (!modal || !modalFrame || !modalTitle) {
-            return;
-        }
-
-        modalFrame.src = pdfPath;
+    const openModal = (pdfPath, title, trigger) => {
+        if (!modal || !certificateFrame || !modalTitle) return;
+        lastFocusedElement = trigger;
+        certificateFrame.src = pdfPath;
         modalTitle.textContent = title;
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
-    }
+        modal.querySelector(".modal-close")?.focus();
+    };
 
-    function closeCertificateModal() {
-        if (!modal || !modalFrame) {
-            return;
-        }
-
+    const closeModal = () => {
+        if (!modal || !certificateFrame) return;
         modal.classList.remove("is-open");
         modal.setAttribute("aria-hidden", "true");
-        modalFrame.src = "";
+        certificateFrame.src = "";
         document.body.classList.remove("modal-open");
-    }
+        lastFocusedElement?.focus();
+    };
 
-    window.addEventListener("scroll", revealSections);
-    revealSections();
-
-    navLinks.forEach(link => {
-        link.addEventListener("click", function (event) {
-            const href = this.getAttribute("href");
-
-            if (!href || !href.startsWith("#")) {
-                return;
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
             }
+        });
+    }, { threshold: 0.12 });
 
-            event.preventDefault();
-            const targetId = href.substring(1);
-            const targetSection = document.getElementById(targetId);
+    document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
-            if (targetSection) {
-                closeMobileMenu();
-                targetSection.scrollIntoView({ behavior: "smooth" });
-            }
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    updateHeader();
+
+    menuToggle?.addEventListener("click", toggleMenu);
+
+    menu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+    });
+
+    previewButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            openModal(button.dataset.pdf, button.dataset.title || "Certificado", button);
         });
     });
 
-    if (navToggle) {
-        navToggle.addEventListener("click", toggleMobileMenu);
-    }
+    closeModalButtons.forEach((button) => button.addEventListener("click", closeModal));
 
-    previewButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            const pdfPath = this.dataset.pdf;
-            const title = this.dataset.title || "Visualizar certificado";
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
 
-            if (!pdfPath) {
-                return;
-            }
-
-            openCertificateModal(pdfPath, title);
-        });
-    });
-
-    if (closeButton) {
-        closeButton.addEventListener("click", closeCertificateModal);
-    }
-
-    if (overlay) {
-        overlay.addEventListener("click", closeCertificateModal);
-    }
-
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape" && navMenu && navMenu.classList.contains("is-open")) {
-            closeMobileMenu();
-        }
-
-        if (event.key === "Escape" && modal && modal.classList.contains("is-open")) {
-            closeCertificateModal();
-        }
-    });
-
-    window.addEventListener("resize", function () {
-        if (window.innerWidth > 768) {
-            closeMobileMenu();
+        if (modal?.classList.contains("is-open")) {
+            closeModal();
+        } else {
+            closeMenu();
         }
     });
 });
-
-if (document.getElementById("particles-js") && typeof particlesJS === "function") {
-    particlesJS("particles-js", {
-        particles: {
-            number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: "#B8860B" },
-            shape: {
-                type: ["circle", "polygon", "star"],
-                stroke: { width: 1, color: "#FFD700" },
-                polygon: { nb_sides: 5 }
-            },
-            opacity: { value: 0.5, random: true },
-            size: { value: 3, random: true },
-            move: { enable: true, speed: 2 }
-        }
-    });
-}
