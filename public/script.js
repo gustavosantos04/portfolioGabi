@@ -1,4 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initializePortfolio() {
+    if (document.documentElement.dataset.portfolioInitialized === "true") return;
+    document.documentElement.dataset.portfolioInitialized = "true";
+
     const header = document.querySelector(".site-header");
     const menu = document.getElementById("menu");
     const menuToggle = document.querySelector(".menu-toggle");
@@ -92,4 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
             closeMenu();
         }
     });
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializePortfolio, { once: true });
+} else {
+    initializePortfolio();
+}
